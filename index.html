@@ -1,0 +1,180 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+        <title>Home - Restoran</title>
+        <link rel="stylesheet" href="css/index.css">
+    </head>
+    <body onload="initCanvas()">
+        <nav class="navbar">
+            <div class="logo">
+                <span>Restoran</span>
+            </div>
+            <ul>
+                <li><a class="active" href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Service</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="pages.html">Pages</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a class="btn" href="bookings.html">Book a Table</a>
+        </nav>
+        <section class="hero" style="background: url('images/a.jpg') no-repeat center center/cover;">
+            <div class="content">
+                <h1>Welcome to Restoran</h1>
+                <p>Your culinary journey begins here. Enjoy our delicious meals crafted with the finest ingredients.</p>
+                <a class="btn" href="menu.html">Explore Our Menu</a>
+            </div>
+        </section>
+       
+        <section class="highlights">
+            <h2>Our Highlights</h2>
+            <div class="highlight-item">
+                <h3>Special Events</h3>
+                <p>Join us for our special events every weekend. Enjoy live music, exclusive dishes, and a vibrant atmosphere that brings our community together.</p>
+                <img src="images/b.jpg" alt="Special Event" width="300" />
+            </div>
+            <div class="highlight-item">
+                <h3>Chef's Recommendations</h3>
+                <p>Try our chef's special dishes that are sure to tantalize your taste buds. Each dish is crafted with passion and creativity, showcasing seasonal ingredients.</p>
+                <img src="images/c.jpg" alt="Chef's Special" width="300" />
+            </div>
+            <div class="highlight-item">
+                <h3>Customer Favorites</h3>
+                <p>Discover the dishes our customers love the most! From appetizers to desserts, we have something for everyone. Don't miss out on our signature dishes!</p>
+                <img src="images/a.jpg" alt="Customer Favorites" width="300" />
+            </div>
+        </section>
+        <section class="media">
+            
+            <div class="highlight-item">
+                <canvas id="restaurantCanvas" width="600" height="400" style="border: 1px solid #000;"></canvas>
+                <div class="controls">
+                    <button class="btn" onclick="showScene('chef')">Chef</button>
+                    <button class="btn" onclick="showScene('table')">Table Setting</button>
+                </div>
+            </div>
+        </section>
+        <section class="about">
+            <h2>About Us</h2>
+            <p>At Restoran, we pride ourselves on providing an exceptional dining experience. Our chefs use only the freshest ingredients to create dishes that are not only delicious but also visually stunning. Whether you're here for a casual meal or a special occasion, we aim to make your visit memorable.</p>
+            <p>Our restaurant has been serving the community for over a decade, and we have built a reputation for quality and service. We believe in sustainability and source our ingredients from local farms whenever possible.</p>
+            <p>We offer a variety of cuisines, including traditional dishes and modern interpretations. Our menu is designed to cater to all tastes and dietary requirements, ensuring that everyone can find something they love.</p>
+        </section>
+        <section class="testimonials">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonial-item">
+                <p>"The best dining experience I've ever had! The food was exquisite and the service was top-notch!" - Jane Doe</p>
+            </div>
+            <div class="testimonial-item">
+                <p>"A hidden gem! I can't recommend the chef's specials enough." - John Smith</p>
+            </div>
+            <div class="testimonial-item">
+                <p>"Every visit is a delight! The ambiance is perfect for a romantic dinner." - Emily White</p>
+            </div>
+            <div class="testimonial-item">
+                <p>"I love the variety on the menu. There's always something new to try!" - Michael Brown</p>
+            </div>
+        </section>
+        <section class="contact-info">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or would like to make a reservation, please reach out to us!</p>
+            <p>Email: info@restoran.com</p>
+            <p>Phone: (123) 456-7890</p>
+            <p>Address: 123 Culinary St, Food City, FC 12345</p>
+        </section>
+        <footer>
+            <p>2024 Restoran. All rights reserved.</p>
+        </footer>
+        <script>
+            function initCanvas() {
+                const canvas = document.getElementById('restaurantCanvas');
+                const ctx = canvas.getContext('2d');
+
+                function showScene(type) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.fillStyle = '#fff';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                    if (type === 'chef') {
+                        drawChefScene(ctx);
+                    } else {
+                        drawTableSetting(ctx);
+                    }
+                }
+
+                function drawChefScene(ctx) {
+                    ctx.beginPath();
+                    ctx.strokeStyle = '#000';
+                    ctx.lineWidth = 2;
+
+                    ctx.arc(300, 100, 30, 0, Math.PI * 2);
+                    ctx.fillStyle = '#f2b600';
+                    ctx.fill();
+                    ctx.stroke();
+
+                    ctx.moveTo(300, 130);
+                    ctx.lineTo(300, 200);
+                    ctx.stroke();
+
+                    ctx.moveTo(300, 150);
+                    ctx.lineTo(230, 180);
+                    ctx.moveTo(300, 150);
+                    ctx.lineTo(370, 180);
+                    ctx.stroke();
+
+                    ctx.beginPath();
+                    ctx.moveTo(370, 180);
+                    ctx.lineTo(370, 220);
+                    ctx.lineWidth = 4;
+                    ctx.stroke();
+
+                    ctx.beginPath();
+                    ctx.moveTo(275, 160);
+                    ctx.lineTo(325, 160);
+                    ctx.moveTo(275, 160);
+                    ctx.lineTo(275, 200);
+                    ctx.moveTo(325, 160);
+                    ctx.lineTo(325, 200);
+                    ctx.stroke();
+
+                    ctx.fillStyle = '#000';
+                    ctx.font = '16px Arial';
+                    ctx.fillText('Chef in action: Preparing delicious dishes', 20, 350);
+                }
+
+                function drawTableSetting(ctx) {
+                    ctx.beginPath();
+                    ctx.strokeStyle = '#000';
+                    ctx.lineWidth = 2;
+
+                    ctx.rect(150, 200, 300, 100);
+                    ctx.stroke();
+
+                    ctx.beginPath();
+                    ctx.arc(200, 250, 20, 0, Math.PI * 2);
+                    ctx.arc(400, 250, 20, 0, Math.PI * 2);
+                    ctx.stroke();
+
+                    ctx.moveTo(190, 230);
+                    ctx.lineTo(170, 230);
+                    ctx.moveTo(410, 230);
+                    ctx.lineTo(430, 230);
+                    ctx.stroke();
+
+                    ctx.moveTo(150, 300);
+                    ctx.lineTo(450, 300);
+                    ctx.stroke();
+
+                    ctx.fillStyle = '#000';
+                    ctx.font = '16px Arial';
+                    ctx.fillText('Table Setting: Perfect for a fine dining experience', 20, 350);
+                }
+
+                showScene('chef');
+                window.showScene = showScene;
+            }
+        </script>
+    </body>
+</html>
